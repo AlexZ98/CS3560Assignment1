@@ -1,0 +1,4 @@
+public interface VotingService {
+    public void poll(Student student, String answer);
+
+}
