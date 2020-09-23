@@ -1,10 +1,17 @@
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 public class SingleChoiceQuestion implements VotingService{
     private int tCount, fCount;
     private String candidateAnswer1, candidateAnswer2;
+    private HashMap<Student, String> studentAnswerMap;
 
     public SingleChoiceQuestion(String candidateAnswer1, String candidateAnswer2){
         this.candidateAnswer1 = candidateAnswer1;
         this.candidateAnswer2 = candidateAnswer2;
+        studentAnswerMap = new HashMap<>(100);
+        System.out.println("Candidate answers for this question are: " + candidateAnswer1+ " " + candidateAnswer2);
     }
     public int gettCount() {
         return tCount;
@@ -14,20 +21,30 @@ public class SingleChoiceQuestion implements VotingService{
     }
 
     public void poll(Student student, String studentAnswer) {
-        if (!student.getHasAnswered() && studentAnswer.length()==1) {
-            System.out.println("Student ID: " + student.getId() + " | Answer: " + studentAnswer);
-            if (studentAnswer.equalsIgnoreCase(candidateAnswer1)) {
-                tCount++;
-            } else if (studentAnswer.equalsIgnoreCase(candidateAnswer2)) {
-                fCount++;
+
+        if(studentAnswer.length()==1) {
+            System.out.println("Student ID: " + student.getId() + " | Answer given: " + studentAnswer);
+            if (!studentAnswerMap.containsKey(student)) {
+                studentAnswerMap.put(student, studentAnswer);
             }
-            else{
-                throw new IllegalArgumentException("Invalid answer submitted");
+            else if(studentAnswerMap.containsKey(student)){
+                studentAnswerMap.replace(student, studentAnswer);
             }
-            student.answered();
         }
+
     }
     public void getResults(){
+        Iterator iterator = studentAnswerMap.entrySet().iterator();
+        while(iterator.hasNext()){
+            Map.Entry mapElement = (Map.Entry)iterator.next();
+            if(((String)mapElement.getValue()).contains(candidateAnswer1)){
+                tCount++;
+            }
+            if(((String)mapElement.getValue()).contains(candidateAnswer2)){
+                fCount++;
+            }
+
+        }
         System.out.println("# Responses for True: " + gettCount() + " | # Responses for False: " + getfCount());
     }
 }
