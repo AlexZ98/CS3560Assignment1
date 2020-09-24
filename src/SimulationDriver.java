@@ -3,7 +3,7 @@ import java.util.Random;
 public class SimulationDriver {
 
     public static void main(String[] args) {
-            VotingService votingService = new MultipleChoiceQuestion("1","2","3","4");
+            VotingService votingService = new MultipleChoiceQuestion("1","2","3","4","1");
             Student[] students = new Student[10];
             Random random = new Random();
             for(int i =0; i<10; i++){
@@ -23,7 +23,7 @@ public class SimulationDriver {
          ((MultipleChoiceQuestion)votingService).getResults();
 
 
-        votingService = new SingleChoiceQuestion("1","2");
+        votingService = new SingleChoiceQuestion("1","2","1");
         Student student = new Student("100");
         Student studnt = new Student("101");
 
