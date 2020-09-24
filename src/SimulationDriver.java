@@ -9,16 +9,17 @@ public class SimulationDriver {
             for(int i =0; i<10; i++){
             students[i] = new Student(String.valueOf(i+1));
         }
-            votingService.poll(students[0], "1234");
-            votingService.poll(students[1], "1");
-            votingService.poll(students[2], "4");
-            votingService.poll(students[3], "2");
-            votingService.poll(students[4], "134");
-            votingService.poll(students[5], "3");
-            votingService.poll(students[6], "34");
-            votingService.poll(students[7], "14");
-            votingService.poll(students[8], "13");
-            votingService.poll(students[9], "12");
+            votingService.vote(students[0], "1234");
+            votingService.vote(students[1], "1");
+            votingService.vote(students[2], "4");
+            votingService.vote(students[3], "2");
+            votingService.vote(students[4], "134");
+            int ans = random.nextInt(4)+1;
+            votingService.vote(students[5], String.valueOf(ans));
+            votingService.vote(students[6], String.valueOf(ans));
+            votingService.vote(students[7], String.valueOf(ans));
+            votingService.vote(students[8], String.valueOf(ans));
+            votingService.vote(students[9], String.valueOf(ans));
          ((MultipleChoiceQuestion)votingService).getResults();
 
 
@@ -26,9 +27,9 @@ public class SimulationDriver {
         Student student = new Student("100");
         Student studnt = new Student("101");
 
-            votingService.poll(student,"2");
-            votingService.poll(studnt, "1");
-            votingService.poll(student,"1");
+            votingService.vote(student,"2");
+            votingService.vote(studnt, "1");
+
 
         ((SingleChoiceQuestion)votingService).getResults();
 
