@@ -2,14 +2,16 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class SingleChoiceQuestion implements VotingService{
+public class SingleChoiceQuestion extends Question implements VotingService{
     private int tCount, fCount;
     private String candidateAnswer1, candidateAnswer2;
     private HashMap<Student, String> studentAnswerMap;
+    private String answer;
 
-    public SingleChoiceQuestion(String candidateAnswer1, String candidateAnswer2){
+    public SingleChoiceQuestion(String candidateAnswer1, String candidateAnswer2, String answer){
         this.candidateAnswer1 = candidateAnswer1;
         this.candidateAnswer2 = candidateAnswer2;
+        this.answer = answer;
         studentAnswerMap = new HashMap<>(100);
         System.out.println("Candidate answers for this question are: " + candidateAnswer1+ " " + candidateAnswer2);
     }
@@ -30,7 +32,9 @@ public class SingleChoiceQuestion implements VotingService{
             else if(studentAnswerMap.containsKey(student)){
                 studentAnswerMap.replace(student, studentAnswer);
             }
+            checkAnswer(studentAnswer);
         }
+
 
     }
     public void getResults(){
@@ -46,5 +50,12 @@ public class SingleChoiceQuestion implements VotingService{
 
         }
         System.out.println("# Responses for True: " + gettCount() + " | # Responses for False: " + getfCount());
+    }
+
+    @Override
+    public void checkAnswer(String answer) {
+        if(answer==this.answer){
+            System.out.println("Correct answer");
+        }
     }
 }
