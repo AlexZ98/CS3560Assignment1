@@ -30,10 +30,10 @@ public class MultipleChoiceQuestion implements VotingService{
         studentAnswerMap = new HashMap<>(100);
         System.out.println("Candidate answers for this question are: " + candidateAnswer1 + " " + candidateAnswer2 +" " + candidateAnswer3 +" " + candidateAnswer4);
     }
-    public void poll(Student student, String studentAnswer) {
+    public void vote(Student student, String studentAnswer) {
 
         if(studentAnswer.length()<5) {
-            System.out.println("Student ID: " + student.getId() + " | Answer given: " + studentAnswer);
+            System.out.println("Student ID: " + student.getId() + " | Answer(s) given: " + studentAnswer);
             if (!studentAnswerMap.containsKey(student)) {
                 studentAnswerMap.put(student, studentAnswer);
             }
