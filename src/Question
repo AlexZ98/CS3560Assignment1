@@ -1,0 +1,3 @@
+public abstract class Question implements VotingService{
+    public abstract void checkAnswer(String answer);
+    }
