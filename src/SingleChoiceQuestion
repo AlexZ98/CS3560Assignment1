@@ -20,7 +20,7 @@ public class SingleChoiceQuestion implements VotingService{
         return fCount;
     }
 
-    public void poll(Student student, String studentAnswer) {
+    public void vote(Student student, String studentAnswer) {
 
         if(studentAnswer.length()==1) {
             System.out.println("Student ID: " + student.getId() + " | Answer given: " + studentAnswer);
@@ -40,7 +40,7 @@ public class SingleChoiceQuestion implements VotingService{
             if(((String)mapElement.getValue()).contains(candidateAnswer1)){
                 tCount++;
             }
-            if(((String)mapElement.getValue()).contains(candidateAnswer2)){
+            else if(((String)mapElement.getValue()).contains(candidateAnswer2)){
                 fCount++;
             }
 
