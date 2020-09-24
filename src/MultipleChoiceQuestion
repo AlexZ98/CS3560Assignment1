@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class MultipleChoiceQuestion implements VotingService{
+public class MultipleChoiceQuestion extends Question implements VotingService{
 
 
     public int getaCount() {
@@ -21,12 +21,14 @@ public class MultipleChoiceQuestion implements VotingService{
     private HashMap<Student, String> studentAnswerMap;
     private int aCount, bCount, cCount, dCount;
     private String candidateAnswer1, candidateAnswer2, candidateAnswer3, candidateAnswer4;
+    private String answer;
 
-    public MultipleChoiceQuestion(String candidateAnswer1, String candidateAnswer2, String candidateAnswer3, String candidateAnswer4 ){
+    public MultipleChoiceQuestion(String candidateAnswer1, String candidateAnswer2, String candidateAnswer3, String candidateAnswer4, String answer ){
         this.candidateAnswer1 = candidateAnswer1;
         this.candidateAnswer2 = candidateAnswer2;
         this.candidateAnswer3 = candidateAnswer3;
         this.candidateAnswer4 = candidateAnswer4;
+        this.answer = answer;
         studentAnswerMap = new HashMap<>(100);
         System.out.println("Candidate answers for this question are: " + candidateAnswer1 + " " + candidateAnswer2 +" " + candidateAnswer3 +" " + candidateAnswer4);
     }
@@ -63,5 +65,12 @@ public class MultipleChoiceQuestion implements VotingService{
             System.out.println("# Responses for A: " + getaCount() + " | # Responses for B: " + getbCount() + " | # Responses for C: " + getcCount() + " | # Responses for D: " + getdCount());
 
         }
+
+    @Override
+    public void checkAnswer(String answer) {
+        if(answer==this.answer){
+            System.out.println("Correct answer");
+        }
     }
+}
 
