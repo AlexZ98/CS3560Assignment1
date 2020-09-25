@@ -20,6 +20,7 @@ public class SimulationDriver {
             votingService.vote(students[7], String.valueOf(ans));
             votingService.vote(students[8], String.valueOf(ans));
             votingService.vote(students[9], String.valueOf(ans));
+
          ((MultipleChoiceQuestion)votingService).getResults();
 
 
