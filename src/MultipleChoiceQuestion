@@ -42,6 +42,7 @@ public class MultipleChoiceQuestion extends Question implements VotingService{
             else if(studentAnswerMap.containsKey(student)){
                 studentAnswerMap.replace(student, studentAnswer);
             }
+            checkAnswer(student, studentAnswer);
         }
     }
         public void getResults(){
@@ -67,9 +68,9 @@ public class MultipleChoiceQuestion extends Question implements VotingService{
         }
 
     @Override
-    public void checkAnswer(String answer) {
-        if(answer==this.answer){
-            System.out.println("Correct answer");
+    public void checkAnswer(Student student, String answ) {
+        if(answ.contains(this.answer)){
+            System.out.print("Student with ID: " + student.getId() +" Answered correctly\n");
         }
     }
 }
