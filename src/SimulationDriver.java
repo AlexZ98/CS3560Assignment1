@@ -14,13 +14,10 @@ public class SimulationDriver {
             votingService.vote(students[2], "4");
             votingService.vote(students[3], "2");
             votingService.vote(students[4], "134");
-            int ans = random.nextInt(4)+1;
-            votingService.vote(students[5], String.valueOf(ans));
-            votingService.vote(students[6], String.valueOf(ans));
-            votingService.vote(students[7], String.valueOf(ans));
-            votingService.vote(students[8], String.valueOf(ans));
-            votingService.vote(students[9], String.valueOf(ans));
-
+            for(int i =5; i<10;i++) {
+                int ans = random.nextInt(4) + 1;
+                votingService.vote(students[i], String.valueOf(ans));
+            }
          ((MultipleChoiceQuestion)votingService).getResults();
 
 
