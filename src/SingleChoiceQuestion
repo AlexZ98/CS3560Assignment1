@@ -26,13 +26,14 @@ public class SingleChoiceQuestion extends Question implements VotingService{
 
         if(studentAnswer.length()==1) {
             System.out.println("Student ID: " + student.getId() + " | Answer given: " + studentAnswer);
+            checkAnswer(student, studentAnswer);
             if (!studentAnswerMap.containsKey(student)) {
                 studentAnswerMap.put(student, studentAnswer);
             }
             else if(studentAnswerMap.containsKey(student)){
                 studentAnswerMap.replace(student, studentAnswer);
             }
-            checkAnswer(studentAnswer);
+
         }
 
 
@@ -53,9 +54,9 @@ public class SingleChoiceQuestion extends Question implements VotingService{
     }
 
     @Override
-    public void checkAnswer(String answer) {
-        if(answer==this.answer){
-            System.out.println("Correct answer");
+    public void checkAnswer(Student student, String answ) {
+        if(answ.contains(this.answer)){
+            System.out.print("Student with ID: "+student.getId() + " Answered correctly\n");
         }
     }
 }
