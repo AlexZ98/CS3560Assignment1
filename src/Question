@@ -1,4 +1,7 @@
 public abstract class Question implements VotingService{
+    private int aCount, bCount, cCount, dCount, tCount, fCount;
+    private String question;
+    private String answer;
     public abstract void checkAnswer(Student student, String answer);
     public abstract void getResults();
     }
